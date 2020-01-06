@@ -40,7 +40,7 @@ class TweetsController < ApplicationController
       end
 
       def confirm
-        @tweet = Tweet.new(blog_params)
+        @tweet = Tweet.new(tweet_params)
         render :new if @tweet.invalid?
     end
     
