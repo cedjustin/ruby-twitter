@@ -1,22 +1,25 @@
-<%= form_with(model: @tweet, local: true, url: confirm_tweets_path) do |form| %>
-  <% if @tweet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
-
-      <ul>
-        <% @tweet.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+<div class="container d-flex justify-content-center mt-2">
+    <%= form_with(model: @tweet, local: true, url: confirm_tweets_path) do |form| %>
+        <% if @tweet.errors.any? %>
+            <ul>
+                <% @tweet.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+        <div class="field">
+        </div>
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <%= form.label :content, class: "input-group-text" %>
+                    </div>
+                    <%= form.text_field :content, class: "form-control" %>
+                </div>
+                <%= form.submit "Tweet", class: "btn btn-outline-primary"%>
+            </div>
+        </div>
+    <% end %>
+</div>

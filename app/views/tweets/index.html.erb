@@ -1,27 +1,66 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Twitter</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tweets.each do |tweet| %>
-      <tr>
-        <td><%= tweet.content %></td>
-        <td><%= link_to 'Show', tweet %></td>
-        <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Twitter', new_tweet_path %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 border-right d-flex justify-content-center">
+            <div>
+                <div class="container mt-3">
+                    <img src="https://img.icons8.com/android/50/000000/twitter.png">
+                </div>
+                <div class="mt-5">
+                    <div class="btn btn-outline-dark rounded-pill btn-lg">
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/birdhouse.png">
+                        <span>Home</span>
+                    </div><br>
+                    <div class="btn rounded-pill btn-lg">
+                        <img src="https://img.icons8.com/carbon-copy/30/000000/bell.png">
+                        <span>Notifications</span>
+                    </div>
+                    <div class="btn rounded-pill btn-lg">
+                        <img src="https://img.icons8.com/ios/30/000000/filled-message.png">
+                        <span>Messages</span>
+                    </div>
+                    <div class="btn rounded-pill btn-lg">
+                        <img src="https://img.icons8.com/windows/30/000000/bookmark-book--v1.png">
+                        <span>Bookmarks</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <nav class="navbar navbar-light">
+                <span class="navbar-brand mb-0 h1">Home</span>
+            </nav>
+            <div class="row d-flex align-items-center">
+                <img src="https://img.icons8.com/color/96/000000/circled-user-female-skin-type-3.png">
+                <span class="text-secondary h5 ml-2">Whats happening?</span>
+                <%= link_to 'Tweet', new_tweet_path, class:"btn btn-outline-primary rounded-pill ml-2" %>
+            </div>
+            <% @tweets.each do |tweet| %>
+                <div class="card mt-2" style="width: 40rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">John Doe</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= tweet.created_at%></h6>
+                        <p class="card-text"><%= tweet.content%></p>
+                        <%= link_to 'Read', tweet, class: "card-link" %>
+                        <%= link_to 'Edit', edit_tweet_path(tweet), class: "card-link" %>
+                        <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure?' }, class: "card-link" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+        <div class="col-3 border-left">
+            <div class="card mt-2" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Trends For You</h5>
+                    <hr>    
+                    <div class="trends">
+                        <h6>#Champagnepapi</h6>
+                        <span>100 Greets</span>
+                        <hr>
+                        <h6>#Diveintocode</h6>
+                        <span>80 Greets</span>                
+                    </div>    
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
