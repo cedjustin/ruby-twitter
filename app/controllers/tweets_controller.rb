@@ -16,9 +16,9 @@ class TweetsController < ApplicationController
     end
 
     def create
+        @tweet = Tweet.new(tweet_params)
         if @tweet.save
-            redirect_to tweets_path
-            flash[:notice] = "tweet created"
+            redirect_to tweets_path, notice: "You have created new tweet!"
         else
             redirect_to new_tweet_path
         end
@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
 
     def update
         if @tweet.update(tweet_params)
-            redirect_to @tweet
+            redirect_to @tweet,
             notice: 'Tweet was successfully updated.'
         else
             render :edit
@@ -35,7 +35,7 @@ class TweetsController < ApplicationController
     
       def destroy
         @tweet.destroy
-          redirect_to tweets_path
+          redirect_to tweets_path,
           notice: 'Tweet was successfully destroyed.'
       end
     

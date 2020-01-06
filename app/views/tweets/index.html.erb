@@ -14,9 +14,9 @@
     <% @tweets.each do |tweet| %>
       <tr>
         <td><%= tweet.content %></td>
-        <td><%= link_to 'Show', twitter %></td>
+        <td><%= link_to 'Show', tweet %></td>
         <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-        <td><%= link_to 'Destroy', twitter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Twitter', new_twitter_path %>
+<%= link_to 'New Twitter', new_tweet_path %>
