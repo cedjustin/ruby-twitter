@@ -38,6 +38,11 @@ class TweetsController < ApplicationController
           redirect_to tweets_path,
           notice: 'Tweet was successfully destroyed.'
       end
+
+      def confirm
+        @tweet = Tweet.new(blog_params)
+        render :new if @tweet.invalid?
+    end
     
       private
         def set_tweet
