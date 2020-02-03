@@ -1,7 +1,29 @@
 <h1>Editing Twitter</h1>
+<div class="container d-flex justify-content-center mt-2">
+    <%= form_with(model: @tweet, local: true) do |form| %>
+        <% if @tweet.errors.any? %>
+            <ul>
+                <% @tweet.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        <% end %>
 
-<%= render 'form', twitter: @tweet %>
-
+        <div class="field">
+        </div>
+        <div class="card" style="width: 40rem;">
+            <div class="card-body">
+                <div class="input-group input-group-sm mb-3">
+                    <div class="input-group-prepend">
+                        <%= form.label :content, class: "input-group-text" %>
+                    </div>
+                    <%= form.text_field :content, class: "form-control" %>
+                </div>
+                <%= form.submit "Tweet", class: "btn btn-outline-primary"%>
+            </div>
+        </div>
+    <% end %>
+</div>
 <%= link_to 'Show', @tweet %> |
 <%= link_to 'Back', tweets_path %>
 
