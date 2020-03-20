@@ -11,7 +11,7 @@
             <% end %>
             <%= form_with(model: @tweet, url: new_tweet_path, local: true, method: 'get') do |form| %>
                 <%= form.hidden_field :content %>
-                <%= form.submit "back", class: "btn btn-outline-dark mt-2" %>
+                <%= form.submit "back", name: 'back' , class: "btn btn-outline-dark mt-2" %>
             <% end %>
         </div>
     </div>
